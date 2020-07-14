@@ -1,0 +1,84 @@
+<html>
+
+<body>
+
+    <head>
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/table-to-json@1.0.0/lib/jquery.tabletojson.min.js"
+            integrity="sha256-H8xrCe0tZFi/C2CgxkmiGksqVaxhW0PFcUKZJZo1yNU=" crossorigin="anonymous"></script>
+        <script src="index.js"></script>
+    </head>
+    <div class="header">
+        <h1>Operating Systems Visualization</h1>
+    </div>
+    <div class="topnav">
+        <a class="active" href="CPU_Scheduling.html">CPU Scheduling Algorithms</a>
+        <a href="Disc_Scheduling.html">Disc Scheduling Algorithms</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="clearfix contain">
+        <form action="/action_page.php" class="column menu">
+            <p class="table-header">Please select Scheduling Algorithm</p>
+            <input type="radio" name="Algorithm" value="RR"><label for="RR" class="table-header"> &nbsp;&nbsp;Round
+                Robin</label>
+            &nbsp;&nbsp;&nbsp;&nbsp;<label for="time_quanta" class="table-header">Time Quanta:
+                &nbsp;&nbsp;</label><input type="number" id="quanta"><br>
+            <input type="radio" name="Algorithm" value="SJF"><label for="SJF" class="table-header"> &nbsp;&nbsp;Shortest
+                Job First</label><br>
+            <input type="radio" name="Algorithm" value="PR_noPREMP"><label for="PR_noPREMP" class="table-header">
+                &nbsp;&nbsp;Priority Without
+                Preemption</label><br>
+            <input type="radio" name="Algorithm" value="PR_withPREMP"><label for="PR_withPREMP" class="table-header">
+                &nbsp;&nbsp;Priority With
+                Pre-emption</label>
+            <br>
+        </form>
+        <div class="column content">
+            <p class="table-header">Enter the following details of each Process</p>
+            <table id="table_input">
+                <thead>
+                    <tr>
+                        <th style="text-align: center;color: white;">PID</th>
+                        <th style="text-align: center;color: white;">Arrival</th>
+                        <th style="text-align: center;color: white;">Burst</th>
+                        <th style="text-align: center;color: white;">Priority</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="number" style="width:100%" id="0" /></td>
+                        <td><input type="number" style="width:100%" id="1" /></td>
+                        <td><input type="number" style="width:100%" id="2" /></td>
+                        <td><input type="number" style="width:100%" id="3" /></td>
+                        <td><button onclick="generate_table()">Add</button></td>
+                    </tr>
+                </tbody>
+            </table><br>
+        </div>
+        <div align="center"><button onclick="read_data()">Submit</button></div>
+
+        <table align="center" id="demo">
+            <div align="center">Ghant Chart</div>
+            <thead>
+                <th>Time</th>
+                <th>pid</th>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <p id="avg" align="center"></p>
+    </div>
+    <div class="footer">
+        <a href="">Comments & Questions</a><a> ||</a>
+        <a href="">Videos of Dr.Shobaki</a>
+    </div>
+</body>
+
+<<<<<<< HEAD
+</html>
+=======
+</html>
+>>>>>>> 99727dc7962638affd22731fdd50101c326f9ebd
