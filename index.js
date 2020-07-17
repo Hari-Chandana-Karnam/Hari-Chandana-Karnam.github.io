@@ -47,13 +47,13 @@ function Data(PID, arrival_time, burst_time, priority) {
         this.waiting_time = waitingTime;
     }
 }
-function output(time,PID){
+function output(time, PID) {
     this.time = time;
     this.PID = PID;
 }
 function read_data() {
     var table = $('#table_input').tableToJSON();
-    no_of_processes = table.length-1;
+    no_of_processes = table.length - 1;
     var processes = [];
     for (var i = 1; i < table.length; i++) {
         processes[i - 1] = new Data(table[i].PID, table[i].Arrival, table[i].Burst, table[i].Priority);
@@ -175,16 +175,10 @@ function read_data() {
 
 }
 function generate_output(time, PID) {
-    var table = document.getElementById("demo");
-    var row = table.insertRow(-1);
-    var cell1 = row.insertCell(-1);
-    var element1 = document.createElement("td");
-    element1.innerHTML = time;
-    cell1.appendChild(element1);
-    var cell2 = row.insertCell(-1);
-    var element2 = document.createElement("td");
-    element2.innerHTML = PID;
-    cell2.appendChild(element2);
+    var node = document.createElement("li");
+    var textnode = document.createTextNode(time);
+    node.appendChild(textnode);
+    document.getElementById("gantt").appendChild(node);
 }
 
 
