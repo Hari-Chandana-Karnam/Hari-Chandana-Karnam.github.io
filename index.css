@@ -1,6 +1,6 @@
 .header {
   background-color: lightblue;
-  padding: 20px;
+  padding: 5px;
   text-align: center;
 }
 .topnav {
@@ -25,13 +25,13 @@
 }
 .footer {
   background-color: lightblue;
-  padding: 20px;
+  padding: 10px;
   font-size: 15px;
   text-align: center;
 }
 .contain{
   background-color: slategray;
-  padding: 90px;
+  padding: 160px;
 }
 .column {
   float: left;
@@ -60,91 +60,72 @@ table, th, td {
 .headings a {
   border: 1px solid white;
 }
-/* RESET RULES
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-:root {
-  --white: #fff;
-  --divider: lightgrey;
-  --body: #f5f7f8;
+.gantt {  
+	max-width: 1200px; 
+	min-width: 650px;  
+	margin: 0 auto; 
+	padding: 50px;
+}
+.chart { 
+	display: grid;  
+	border: 2px solid #000;  
+	position: relative;  
+	overflow: hidden; 
+} 
+.chart-row {  
+	display: grid; 
+	grid-template-columns: 50px 1fr; 
+	background-color: #DCDCDC;
+}
+.chart-period { 
+	color:  #fff;  
+	background-color:  #708090 !important;  
+	border-bottom: 2px solid #000;  
+	grid-template-columns: 50px repeat(12, 1fr);
+
 }
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+.chart-period > span {
+	text-align: center;  
+	font-size: 13px;  
+	align-self: center;  
+	font-weight: bold;  
+	padding: 15px 0;   
 }
+.chart-lines { 
+	position: absolute;  
+	height: 100%;  
+	width: 100%;  
+	background-color: transparent;  
+	grid-template-columns: 50px repeat(12, 1fr);}
 
-ul {
-  list-style: none;
-  color: white;
+.chart-lines > span {  
+	display: block;  border-right: 1px solid rgba(0, 0, 0, 0.3);
 }
-
-a {
-  text-decoration: none;
-  color: white;
+.chart-row-item { 
+	background-color: #808080;  
+	border: 1px solid #000;  
+	border-top: 0;  border-left: 0;  
+	padding: 20px 0;  font-size: 15px;  
+	font-weight: bold;  
+	text-align: center;
 }
-
-body {
-  background: var(--body);
-  font-size: 16px;
-  font-family: sans-serif;
-  padding-top: 40px;
+.chart-row-bars { 
+	list-style: none; 
+	display: grid;  padding: 15px 0;  
+	margin: 0;  
+	grid-template-columns: repeat(12, 1fr); 
+	grid-gap: 10px 0;  
+	border-bottom: 1px solid #000;
 }
-
-.chart-wrapper {
-  max-width: 1150px;
-  padding: 0 10px;
-  margin: 0 auto;
-}
-
-
-/* CHART-VALUES
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-.chart-wrapper .chart-values {
-  position: relative;
-  display: flex;
-  margin-bottom: 20px;
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-.chart-wrapper .chart-values li {
-  flex: 1;
-  min-width: 80px;
-  text-align: center;
-}
-
-.chart-wrapper .chart-values li:not(:last-child) {
-  position: relative;
-}
-
-.chart-wrapper .chart-values li:not(:last-child)::before {
-  content: '';
-  position: absolute;
-  right: 0;
-  height: 510px;
-  border-right: 1px solid var(--divider);
-}
-
-
-/* CHART-BARS
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-.chart-wrapper .chart-bars li {
-  position: relative;
-  color: var(--white);
-  margin-bottom: 15px;
-  font-size: 16px;
-  border-radius: 20px;
-  padding: 10px 20px;
-  width: 0;
-  opacity: 0;
-  transition: all 0.65s linear 0.2s;
-}
-
-@media screen and (max-width: 600px) {
-  .chart-wrapper .chart-bars li {
-    padding: 10px;
-  }
-}
-
-  
+li {  
+  font-weight: 450;  
+  text-align: left;  
+  font-size: 15px;  min-height: 15px;  
+  background-color: #708090;  
+  padding: 5px 15px;  color: #fff;  
+  overflow: hidden;  
+  position: relative;  
+  cursor: pointer;  
+  border-radius: 15px;
+} 

@@ -47,14 +47,15 @@ function Data(PID, arrival_time, burst_time, priority) {
         this.waiting_time = waitingTime;
     }
 }
-function output(time, PID) {
-    this.time = time;
+function output(time,PID){
+    this.time =time;
     this.PID = PID;
 }
 function read_data() {
     var table = $('#table_input').tableToJSON();
     no_of_processes = table.length - 1;
     var processes = [];
+    var output_gantt=[];
     for (var i = 1; i < table.length; i++) {
         processes[i - 1] = new Data(table[i].PID, table[i].Arrival, table[i].Burst, table[i].Priority);
     }
@@ -88,7 +89,7 @@ function read_data() {
                 }
             }
             last = time;
-            generate_output(time, running_in_cpu.PID);
+            output_gantt.push(new output(time, running_in_cpu.PID));
             time += running_in_cpu.work(interruptTime, time);
             if (running_in_cpu.completed == 0) {
                 process_done += 1;
@@ -109,7 +110,7 @@ function read_data() {
             processes.sort(function (a, b) { return a.priority - b.priority });
             running_in_cpu = ready_queue.shift();
             last = time;
-            generate_output(time, running_in_cpu.PID);
+            output_gantt.push(new output(time, running_in_cpu.PID));
             time += running_in_cpu.work(0, time);
             if (running_in_cpu.completed == 0) {
                 process_done += 1;
@@ -130,7 +131,7 @@ function read_data() {
             ready_queue.sort(function (a, b) { return a.burst_time - b.burst_time });
             running_in_cpu = ready_queue.shift();
             last = time;
-            generate_output(time, running_in_cpu.PID);// printing cpu status at current time
+            output_gantt.push(new output(time, running_in_cpu.PID));// printing cpu status at current time
             time += running_in_cpu.work(0, time);
             if (running_in_cpu.completed == 0) {
                 process_done += 1;
@@ -155,7 +156,7 @@ function read_data() {
             }
             running_in_cpu = ready_queue.shift();//Giving CPU to process at the front of queue
             last = time;//storing current status into variables for calculation purposes
-            generate_output(time, running_in_cpu.PID);// printing cpu status at current time
+            output_gantt.push(new output(time, running_in_cpu.PID));
             time = time + running_in_cpu.work(time_quanta);//updating time variable
             if (running_in_cpu.completed == 0) {//updating number of process completed
                 process_done++;
@@ -163,7 +164,9 @@ function read_data() {
             }
         }
     }
+    generate_output();
     average_waiting_time();
+    generate_output(output_time, ganttPIDs)
     function average_waiting_time() {
         var total_waiting_time = 0;
         for (var i = 0; i < no_of_processes; i++) {
@@ -172,14 +175,20 @@ function read_data() {
         }
         document.getElementById("avg").innerHTML = "AVG Waiting Time: " + total_waiting_time / (no_of_processes);
     };
-
+    function generate_output() {
+        for (var i = 0; i < output_gantt.length; i++) {
+            var node = document.createElement("span");
+            node.innerText = output_gantt[i].time;
+            document.getElementById("time_instance").appendChild(node);
+            var line = document.createElement("span");
+            document.getElementById("line").appendChild(line);
+            var node = document.createElement("li");
+            var text = document.createTextNode(output_gantt[i].PID);
+            node.appendChild(text);
+            node.style.gridColumn = (i)/(i+1);
+            document.getElementById("running").appendChild(node);
+        }
+    }
 }
-function generate_output(time, PID) {
-    var node = document.createElement("li");
-    var textnode = document.createTextNode(time);
-    node.appendChild(textnode);
-    document.getElementById("gantt").appendChild(node);
-}
-
 
 
