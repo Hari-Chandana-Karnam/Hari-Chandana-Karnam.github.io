@@ -166,7 +166,6 @@ function read_data() {
     }
     generate_output();
     average_waiting_time();
-    generate_output(output_time, ganttPIDs)
     function average_waiting_time() {
         var total_waiting_time = 0;
         for (var i = 0; i < no_of_processes; i++) {
@@ -178,7 +177,7 @@ function read_data() {
     function generate_output() {
         for (var i = 0; i < output_gantt.length; i++) {
             var node = document.createElement("span");
-            node.innerText = output_gantt[i].time;
+            node.innerText = "\xa0\xa0"+output_gantt[i].time;
             document.getElementById("time_instance").appendChild(node);
             var line = document.createElement("span");
             document.getElementById("line").appendChild(line);
