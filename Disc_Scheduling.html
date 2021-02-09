@@ -34,26 +34,26 @@
                     &nbsp;&nbsp;Least Recently Used</label><br>
                 <input type="radio" name="Algorithm" value="Optimal"><label for="Optimal" class="table-header">
                     &nbsp;&nbsp;Optimal</label><br>
+                <label for="frames" style="width: 41%;"class="table-header">Total number of frames:
+                    &nbsp;&nbsp;</label><input type="number" id="frames"><br>
+                <label for="frames" style="width: 41%;" class="table-header">Total number of pages:
+                        &nbsp;&nbsp;</label><input type="number" id="pages"><br>
             </form>
             <div class="column content">
                 <p class="table-header">Enter the following details of memory management</p>
                 <table id="table_input">
                     <thead>
                         <tr>
-                            <th style="text-align: center;color: white;">Number of Pages</th>
-                            <th style="text-align: center;color: white;">Number of Frames</th>
+                            <th style="text-align: center;color: white;">Page</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><input type="number" style="width:100%" id="0" /></td>
-                            <td><input type="number" style="width:100%" id="1" /></td>
-                            <td><input type="number" style="width:100%" id="2" /></td>
                             <td><button onclick="generate_table()">Add a Page Request</button></td>
                         </tr>
                     </tbody>
                 </table><br>
-                <th style="text-align: center;color: white;">Page Request</th>
             </div>
             <div><button onclick="read_data()">Submit</button></div>
             <p style="text-align: center;color: white;" id="avg" align="center"></p>
